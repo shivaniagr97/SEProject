@@ -1,0 +1,26 @@
+{#this is the home page and it gives the user two options either to login as a trader or an admin#}
+{% extends 'base.html' %}
+
+{%block content%}
+
+<div class="jumbotron text-center">
+  <br>
+  <br>
+  <h1>Welcome to Foreign Trading System</h1>
+  <p>Please login to continue</p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<div>
+  <div class="col-sm-6">
+    <a href="http://127.0.0.1:8000/accounts/login/" class="btn btn-primary btn-block btn-lg pull-right" role="button">Login as trader</a>
+  </div>
+  <div class="col-sm-6">
+    <a href="http://127.0.0.1:8000/admin/" class="btn btn-primary btn-block btn-lg" role="button">Login as admin</a>
+  </div>
+</div>
+{%endblock%}
