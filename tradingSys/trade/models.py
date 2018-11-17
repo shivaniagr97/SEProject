@@ -23,4 +23,4 @@ class Trade(models.Model):
         return self.commodityName
 
 # class CommodityRequested(models.Model):
-#     commodityName = models.ForeignKey(Commodity)
+#     commodityName = models.ForeignKey(commodityName)
