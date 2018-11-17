@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .forms import CommodityForm
 # Create your views here.
 from django.http import HttpResponse
+from .models import Commodity
 
 
 def commodityCreateView(request):
@@ -17,9 +18,11 @@ def commodityCreateView(request):
 
 
 def homePageView(request):
-    form = CommodityForm(request.POST or None)
-    if(form.is_valid()):
-        form.save()
+    form = CommodityForm(request.POST)
+    if form.is_valid():
+        appl = form.save(commit = False)
+        appl.user  = request.user
+        appl.save()
 
     context = {
         'form' : form
