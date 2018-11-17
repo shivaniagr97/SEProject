@@ -13,31 +13,31 @@
     <p>Please login to see this page.</p>
   {% endif %}
 {% endif %}
-<div class="panel panel-primary" style="width: 30rem;">
-  <div class="panel-heading">Trader Login</div>
-  <div class="panel-body">
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
+<div class="card border-success text-left col-sm-5 p-4 mt-5">
+  <div class="card-header bg-success">Trader Login</div>
+  <div class="card-body">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
 
-<div class="form-group">
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</div>
-<div class="form-group">
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</div>
+      <div class="form-group">
+        <td>{{ form.username.label_tag }}</td>
+        <td><input id="id_username" name="username" type="text" class="form-control"></td>
+      </div>
+      <div class="form-group">
+        <td>{{ form.password.label_tag }}</td>
+        <td><input id="id_password" name="password" type="password" class="form-control"></td>
+      </div>
 
-<div class="form-group">
-  <input type="submit" value="login" class="btn btn-primary"/>
-  <input type="hidden" name="next" value="{{ next }}" />
-</div>
+      <div class="form-group">
+        <input type="submit" value="login" class="btn btn-success"/>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
 
-</form>
+    </form>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-</div>
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  </div>
 </div>
 </center>
 {% endblock %}

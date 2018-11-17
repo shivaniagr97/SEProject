@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.contrib.auth import logout
 from .forms import CommodityForm
 # Create your views here.
 from django.http import HttpResponse
@@ -7,7 +7,7 @@ from .models import Commodity
 
 
 def commodityCreateView(request):
-    form = CommodityForm(request.POST)
+    form = CommodityForm(request.POST or None)
     if form.is_valid():
         form.save(commit=True)
 
@@ -18,13 +18,9 @@ def commodityCreateView(request):
 
 
 def homePageView(request):
-    form = CommodityForm(request.POST)
-    if form.is_valid():
-        appl = form.save(commit = False)
-        appl.user  = request.user
-        appl.save()
+    return render(request,'trade/trader.html')
 
-    context = {
-        'form' : form
-    }
-    return render(request,'trade/add_commodity.html',context)
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'logged_out.html')
