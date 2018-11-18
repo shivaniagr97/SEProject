@@ -11,3 +11,12 @@ class CommodityForm(forms.ModelForm):
             'quantityAvailable',
             'description'
         ]
+
+class BuyForm(forms.ModelForm):
+    class Meta:
+        model = Commodity
+        fields = [
+            'commodityName',
+            # 'exporterName',
+            'quantityAvailable'
+        ]
