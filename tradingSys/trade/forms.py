@@ -6,7 +6,7 @@ class CommodityForm(forms.ModelForm):
         model = Commodity
         fields = [
             'commodityName',
-            'exporterName',
+            # 'exporterName',
             'price',
             'quantityAvailable',
             'description'
