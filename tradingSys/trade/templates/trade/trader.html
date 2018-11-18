@@ -1,4 +1,13 @@
 {% extends 'basetemp.html' %}
 
 {% block content %}
+ {% for post in posts %}
+      <div>
+          <p>Exporter: {{ post.exporterName }}</p>
+          <h2><a href="">{{ post.commodityName }}</a></h2>
+          <p>Exporter: {{ post.price }}</p>
+          <p>Exporter: {{ post.quantityAvailable }}</p>
+          <p>{{ post.description|linebreaksbr }}</p>
+      </div>
+  {% endfor %}
 {% endblock %}
