@@ -29,7 +29,11 @@ def commodityCreateView(request):
 
 
 def homePageView(request):
-    return render(request,'trade/trader.html')
+    posts= Commodity.objects.all()
+    context = {
+        'posts' : posts
+    }
+    return render(request,'trade/trader.html',context)
 
 
 def logout_view(request):

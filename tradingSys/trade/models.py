@@ -11,8 +11,8 @@ class Commodity(models.Model):
     def __str__(self):
         return self.commodityName
 
-    def get_absolute_url(self):
-        return f"/trade/mycommodities/{self.id}/"
+    # def get_absolute_url(self):
+    #     return f"/trade/mycommodities/{self.id}/"
 
 class Trade(models.Model):
     tradeID = models.IntegerField()
