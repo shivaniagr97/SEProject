@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.urls import reverse
-from .forms import CommodityForm, BuyForm
+from .forms import CommodityForm, RequestForm
 # Create your views here.
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -19,7 +19,7 @@ from django.db import transaction
 @transaction.non_atomic_requests
 def my_view(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
-    form = BuyForm(request.POST or None)
+    form = RequestForm(request.POST or None)
     if form.is_valid():
         # obj = form.save(commit=False)
         # obj.user = request.user
