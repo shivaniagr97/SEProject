@@ -1,5 +1,5 @@
 from django import forms
-from .models import Commodity
+from .models import Commodity, Request
 
 class CommodityForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,13 @@ class CommodityForm(forms.ModelForm):
             'price',
             'quantityAvailable',
             'description'
+        ]
+
+class RequestForm(forms.ModelForm):
+    class Meta:
+        model = Request
+        fields = [
+            'commodityName',
+            'exporterName',
+            'quantityRequested'
         ]

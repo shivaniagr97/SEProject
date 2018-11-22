@@ -24,5 +24,16 @@ class Trade(models.Model):
     def __str__(self):
         return self.commodityName
 
+class Request(models.Model):
+    requestID = models.IntegerField()
+    commodityName = models.CharField( max_length = 50)
+    # importerName = models.CharField( max_length = 50)
+    exporterName = models.CharField( max_length = 50 )
+    quantityRequested = models.IntegerField()
+    # totalPrice = models.FloatField()
+
+    def __str__(self):
+        return self.commodityName
+
 # class CommodityRequested(models.Model):
 #     commodityName = models.ForeignKey(commodityName)

@@ -4,5 +4,6 @@ from .views import commodityCreateView, myCommoditiesView
 urlpatterns = [
     url(r'^$', homePageView, name='home'),
     url(r'^commodity/add/$', commodityCreateView, name='commodity-add'),
+    url(r'^commodity/buy/$', commodityCreateView, name='commodity-buy'),
     url(r'^mycommodities/view/$', myCommoditiesView, name='mycommodities-view'),
 ]
