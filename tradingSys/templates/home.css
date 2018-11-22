@@ -1,0 +1,31 @@
+body{
+	font-family: Righteous;
+	background-image: url("me6436527-business-background-hd-a0225.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+h1{
+	font-size: 80px;
+	color: black;
+	background-color: white;
+}
+p{
+	font-size: 50px;
+	color: black;
+	background-color: white;
+	margin:50px 400px 50px 400px;
+	padding: 10px;
+	border: 2px white solid;
+}
+a{
+	font-size: 40px;
+	margin: 30px;
+	background-color: #F59E47;
+	padding: 10px;
+	border: 2px black solid;
+	text-decoration: none;
+}
+a:hover{
+	background-color: #F2B629;
+	color: black;
+}
