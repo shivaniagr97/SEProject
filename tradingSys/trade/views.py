@@ -14,21 +14,21 @@ from django.views.generic import (
     DeleteView
 )
 
-from django.db import transaction
+# from django.db import transaction
 
-@transaction.non_atomic_requests
+# @transaction.non_atomic_requests
 def my_view(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
     form = RequestForm(request.POST or None)
     if form.is_valid():
-        # obj = form.save(commit=False)
-        # obj.user = request.user
-        # obj.exporterName = request.user
-        # obj.save()
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.save()
         for post in posts:
             if post.commodityName == form.commodityName:
-                post.quantityAvailable = post.quantityAvailable - form.quantityAvailable
-        return HttpResponseRedirect(reverse('mycommodities-view'))
+                # post.quantityAvailable = post.quantityAvailable - form.quantityAvailable
+                return HttpResponseRedirect(reverse('mycommodities-view'))
+        return HttpResponseRedirect(reverse('commodity-buy'))
     context = {
         'form' : form
     }

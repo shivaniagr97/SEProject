@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 # from django.core.urlresolvers import reverse
 # Create your models here.
 class Commodity(models.Model):
@@ -25,7 +26,7 @@ class Trade(models.Model):
         return self.commodityName
 
 class Request(models.Model):
-    requestID = models.IntegerField()
+    requestID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     commodityName = models.CharField( max_length = 50)
     # importerName = models.CharField( max_length = 50)
     exporterName = models.CharField( max_length = 50 )
