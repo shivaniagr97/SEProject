@@ -6,7 +6,7 @@ from .forms import CommodityForm, RequestForm
 # Create your views here.
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .models import Commodity
+from .models import Commodity ,Request
 # from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     UpdateView,
@@ -18,16 +18,18 @@ from django.views.generic import (
 
 # @transaction.non_atomic_requests
 def my_view(request):
-    posts= Commodity.objects.exclude(exporterName = request.user)
+    # posts= Commodity.objects.exclude(exporterName = request.user)
     form = RequestForm(request.POST or None)
     if form.is_valid():
         obj = form.save(commit=False)
         obj.user = request.user
         obj.save()
-        for post in posts:
-            if post.commodityName == form.commodityName:
-                # post.quantityAvailable = post.quantityAvailable - form.quantityAvailable
-                return HttpResponseRedirect(reverse('mycommodities-view'))
+        # for post in posts:
+        #     print post
+        #     print form.fields['commodityName']
+        #     if post.commodityName == form.fields['commodityName']:
+        #         # post.quantityAvailable = post.quantityAvailable - form.quantityAvailable
+        #         return HttpResponseRedirect(reverse('mycommodities-view'))
         return HttpResponseRedirect(reverse('commodity-buy'))
     context = {
         'form' : form
@@ -51,9 +53,17 @@ def commodityCreateView(request):
     }
     return render(request,'trade/add_commodity.html',context)
 
+def requestsShow(request):
+    posts= Request.objects.filter(exporterName = request.user)
+    print posts
+    context = {
+        'posts' : posts
+    }
+    return render(request,'trade/requests.html',context)
 
 def homePageView(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
+    print posts
     context = {
         'posts' : posts
     }

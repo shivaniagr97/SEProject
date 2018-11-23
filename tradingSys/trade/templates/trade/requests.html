@@ -1,0 +1,13 @@
+{% extends 'basetemp.html' %}
+
+{% block content %}
+ {% for post in posts %}
+      <div>
+          <p>Request ID: {{ post.requestID }}</p>
+          <h2><a href="">{{ post.commodityName }}</a></h2>
+          <!-- <p>Exporter: {{ post.price }}</p> -->
+          <p>Quantity Received: {{ post.quantityRequested }}</p>
+          <!-- <p>{{ post.description|linebreaksbr }}</p> -->
+      </div>
+  {% endfor %}
+{% endblock %}
