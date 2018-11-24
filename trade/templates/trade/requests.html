@@ -1,16 +1,17 @@
 {% extends 'basetemp.html' %}
 
 {% block content %}
+<div class="container">
+<div class="row col-sm-12">
  {% for post in posts %}
- <center>
-      <div col-4>
-          <p>Request ID: {{ post.requestID }}</p>
-          <h2><a href="" name="mytextbox">{{ post.commodityName }}</a></h2>
+ <div class="card col-sm-3 m-4 p-4 border-success">
+          <h2>{{ post.importerName }}</h2>
+          <h2>{{ post.commodityName }}</h2>
           <!-- <p>Exporter: {{ post.price }}</p> -->
-          <p>Quantity Received: {{ post.quantityRequested }}</p>
-          <a class="btn btn-primary" href="{% url 'details' post.id %}">Accept</a>
-
-      </div>
-    </center>
+          <p>Quantity Requested: {{ post.quantityRequested }}</p>
+          <a class="btn btn-success" href="{% url 'details' post.id %}">Accept</a>
+  </div>
   {% endfor %}
+  </div>
+  </div>
 {% endblock %}

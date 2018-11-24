@@ -1,15 +1,15 @@
 {% extends 'basetemp.html' %}
 
 {% block content %}
+<div class="container">
+<div class="row col-sm-12">
  {% for post in posts %}
- <center>
-      <div style="width: 100%; overflow: hidden;" col-4>
-          <p>Request ID: {{ post.requestID }}</p>
-          <h2><a href="" name="mytextbox">{{ post.commodityName }}</a></h2>
-          <!-- <p>Exporter: {{ post.price }}</p> -->
-          <p>Quantity Received: {{ post.quantityRequested }}</p>
-          <!-- <p>{{ post.description|linebreaksbr }}</p> -->
-      </div>
-    </center>
+ <div class="card col-sm-3 m-4 p-4 border-success">
+          <h2>{{ post.exporterName }}</h2>
+          <h2>{{ post.commodityName }}</h2>
+          <p>Quantity Requested: {{ post.quantityRequested }}</p>
+  </div>
   {% endfor %}
+  </div>
+  </div>
 {% endblock %}

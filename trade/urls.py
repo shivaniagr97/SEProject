@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import homePageView
+from .views import homePageView, aboutView
 from .views import commodityCreateView, myCommoditiesView, my_view, requestsShow, requestsSentShow, requestAccept
 urlpatterns = [
     url(r'^$', homePageView, name='home'),
@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^commodity/requests/sent$', requestsSentShow, name='requests-view-sent'),
     url(r'^details/(?P<id>\d+)/$', requestAccept, name='details'),
     url(r'^mycommodities/view/$', myCommoditiesView, name='mycommodities-view'),
+    url(r'^about/$',aboutView,name="about-view"),
 ]

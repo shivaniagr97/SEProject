@@ -1,22 +1,18 @@
 {% extends 'basetemp.html' %}
 
 {% block content %}
-
+<div class="container">
+<div class="row col-sm-12">
  {% for post in posts %}
- <center>
- <style>
-   .c1{
-     padding-top: 100px;
-   }
- </style>
-      <div>
-          <p class="c1">Exporter: {{ post.exporterName }}</p>
+      <div class="card col-sm-3 m-4 p-4 border-success">
+          <p>Exporter: {{ post.exporterName }}</p>
           <h2><a href="">{{ post.commodityName }}</a></h2>
           <p>Price: {{ post.price }}</p>
           <p>Quantity: {{ post.quantityAvailable }}</p>
           <p>{{ post.description|linebreaksbr }}</p>
           <p> </p>
       </div>
-    </center>
   {% endfor %}
+</div>
+</div>
 {% endblock %}

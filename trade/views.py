@@ -16,7 +16,6 @@ from django.views.generic import (
 )
 
 # from django.db import transaction
-
 # @transaction.non_atomic_requests
 def my_view(request):
     # posts= Commodity.objects.exclude(exporterName = request.user)
@@ -110,3 +109,7 @@ def requestAccept(request,id):
         Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
         Request.objects.filter(id=id).delete()
         return HttpResponse("ok")
+
+
+def aboutView(request):
+    return render(request, "trade/about.html")
