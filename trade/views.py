@@ -40,12 +40,12 @@ def my_view(request):
 # def my_other_view(request):
 #     do_stuff_on_the_other_database()
 
-def request_page(request):
-    if(request.GET.get('mybtn')):
-        print request.GET.get('mytextbox')
-        # mypythoncode.mypythonfunction( int(request.GET.get('mytextbox')) )
-
-    return render(request,'trade/requests.html')
+# def request_page(request):
+#     if(request.GET.get('mybtn')):
+#         print request.GET.get('mytextbox')
+#         # mypythoncode.mypythonfunction( int(request.GET.get('mytextbox')) )
+#
+#     return render(request,'trade/requests.html')
 
 def commodityCreateView(request):
     form = CommodityForm(request.POST or None)
@@ -62,7 +62,7 @@ def commodityCreateView(request):
 
 def requestsShow(request):
     posts= Request.objects.filter(exporterName = request.user)
-    print posts
+    print (posts)
     context = {
         'posts' : posts
     }
@@ -70,7 +70,7 @@ def requestsShow(request):
 
 def requestsSentShow(request):
     posts= Request.objects.exclude(exporterName = request.user)
-    print posts
+    print (posts)
     context = {
         'posts' : posts
     }
@@ -78,7 +78,7 @@ def requestsSentShow(request):
 
 def homePageView(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
-    print posts
+    print (posts)
     context = {
         'posts' : posts
     }
