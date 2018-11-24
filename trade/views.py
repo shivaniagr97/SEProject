@@ -101,5 +101,12 @@ def myCommoditiesView(request):
 
 def requestAccept(request,id):
     req = Request.objects.get(id=id)
-    Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
-    return HttpResponse("ok")
+    obj = Commodity.objects.get(commodityName=req.commodityName)
+    print req.quantityRequested
+    print obj.quantityAvailable
+    if (req.quantityRequested > obj.quantityAvailable):
+        return HttpResponse("Please request for less commodties")
+    else:
+        Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
+        Request.objects.filter(id=id).delete()
+        return HttpResponse("ok")
