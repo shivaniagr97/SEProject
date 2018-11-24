@@ -7,6 +7,7 @@ from .forms import CommodityForm, RequestForm
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .models import Commodity ,Request
+from django.db.models import F
 # from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     UpdateView,
@@ -100,6 +101,5 @@ def myCommoditiesView(request):
 
 def requestAccept(request,id):
     req = Request.objects.get(id=id)
-    # comm = Commodity.objects.filter(commodityName = req.commodityName, exporterName = req.exporterName)
-    # comm.quantityAvailable = comm.quantityAvailable - req.quantityRequested
+    Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
     return HttpResponse("ok")
