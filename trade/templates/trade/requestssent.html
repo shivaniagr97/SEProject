@@ -2,12 +2,14 @@
 
 {% block content %}
  {% for post in posts %}
-      <div col-4>
+ <center>
+      <div style="width: 100%; overflow: hidden;" col-4>
           <p>Request ID: {{ post.requestID }}</p>
           <h2><a href="" name="mytextbox">{{ post.commodityName }}</a></h2>
           <!-- <p>Exporter: {{ post.price }}</p> -->
           <p>Quantity Received: {{ post.quantityRequested }}</p>
           <!-- <p>{{ post.description|linebreaksbr }}</p> -->
       </div>
+    </center>
   {% endfor %}
 {% endblock %}

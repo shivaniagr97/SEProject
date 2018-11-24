@@ -1,14 +1,22 @@
 {% extends 'basetemp.html' %}
 
 {% block content %}
+
  {% for post in posts %}
+ <center>
+ <style>
+   .c1{
+     padding-top: 100px;
+   }
+ </style>
       <div>
-          <p>Exporter: {{ post.exporterName }}</p>
+          <p class="c1">Exporter: {{ post.exporterName }}</p>
           <h2><a href="">{{ post.commodityName }}</a></h2>
           <p>Price: {{ post.price }}</p>
           <p>Quantity: {{ post.quantityAvailable }}</p>
           <p>{{ post.description|linebreaksbr }}</p>
           <p> </p>
       </div>
+    </center>
   {% endfor %}
 {% endblock %}

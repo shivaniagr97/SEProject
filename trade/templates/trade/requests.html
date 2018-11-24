@@ -2,6 +2,7 @@
 
 {% block content %}
  {% for post in posts %}
+ <center>
       <div col-4>
           <p>Request ID: {{ post.requestID }}</p>
           <h2><a href="" name="mytextbox">{{ post.commodityName }}</a></h2>
@@ -10,5 +11,6 @@
           <a class="btn btn-primary" href="{% url 'details' post.id %}">Accept</a>
 
       </div>
+    </center>
   {% endfor %}
 {% endblock %}

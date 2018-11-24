@@ -7,12 +7,13 @@
   background-image: url("https://www.emerce.nl/content/uploads/2018/07/business-3152586_960_720.jpg");
   background-size: cover;
   font-family: Righteous;
-  color: white;
+  color: brown;
 }
 h1{
   font-size: 70px;
 }
 div{
+  padding-top: 40px;
   font-size: 50px;
 }
 input{
@@ -24,7 +25,7 @@ input[type=submit]{
   width: 80px;
 }
 a{
-  color: white;
+  color: black;
 }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
@@ -36,6 +37,7 @@ a{
 <center>
 <!-- {% if form.errors %} -->
   <h1>Trader Login</h1>
+  <h2>Hello</h2>
 <!-- {% endif %} -->
 
 <!-- {% if next %}
@@ -49,7 +51,7 @@ a{
   <div class="card-header bg-success"></div>
   <div class="card-body">
     <form method="post" action="{% url 'login' %}">
-      <!-- {% csrf_token %} -->
+      {% csrf_token %}
 
       <div class="form-group">
         <td>Username: </td>                      <!--{{ form.username.label_tag }}-->
