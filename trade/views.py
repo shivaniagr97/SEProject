@@ -44,7 +44,7 @@ def my_view(request):
 
 def request_page(request):
     if(request.GET.get('mybtn')):
-        print (request.GET.get('mytextbox'))
+        # print (request.GET.get('mytextbox'))
         # mypythoncode.mypythonfunction( int(request.GET.get('mytextbox')) )
 
     return render(request,'trade/requests.html')
@@ -80,7 +80,7 @@ def requestsSentShow(request):
 
 def homePageView(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
-    print (posts)
+    # print (posts)
     context = {
         'posts' : posts
     }
@@ -102,8 +102,8 @@ def myCommoditiesView(request):
 def requestAccept(request,id):
     req = Request.objects.get(id=id)
     obj = Commodity.objects.get(commodityName=req.commodityName)
-    print req.quantityRequested
-    print obj.quantityAvailable
+    # print req.quantityRequested
+    # print obj.quantityAvailable
     if (req.quantityRequested > obj.quantityAvailable):
         return HttpResponse("Please request for less commodties")
     else:
