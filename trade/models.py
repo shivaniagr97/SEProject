@@ -26,9 +26,10 @@ class Trade(models.Model):
         return self.commodityName
 
 class Request(models.Model):
-    requestID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # requestID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.id(default='1')
     commodityName = models.CharField( max_length = 50)
-    # importerName = models.CharField( max_length = 50)
+    importerName = models.ForeignKey(User, on_delete=models.PROTECT)
     exporterName = models.CharField( max_length = 50 )
     quantityRequested = models.IntegerField()
     # totalPrice = models.FloatField()

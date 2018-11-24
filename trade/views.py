@@ -23,6 +23,7 @@ def my_view(request):
     if form.is_valid():
         obj = form.save(commit=False)
         obj.user = request.user
+        obj.importerName = request.user
         obj.save()
         # for post in posts:
         #     print post
@@ -40,12 +41,12 @@ def my_view(request):
 # def my_other_view(request):
 #     do_stuff_on_the_other_database()
 
-# def request_page(request):
-#     if(request.GET.get('mybtn')):
-#         print request.GET.get('mytextbox')
-#         # mypythoncode.mypythonfunction( int(request.GET.get('mytextbox')) )
-#
-#     return render(request,'trade/requests.html')
+def request_page(request):
+    if(request.GET.get('mybtn')):
+        print (request.GET.get('mytextbox'))
+        # mypythoncode.mypythonfunction( int(request.GET.get('mytextbox')) )
+
+    return render(request,'trade/requests.html')
 
 def commodityCreateView(request):
     form = CommodityForm(request.POST or None)
@@ -62,19 +63,19 @@ def commodityCreateView(request):
 
 def requestsShow(request):
     posts= Request.objects.filter(exporterName = request.user)
-    print (posts)
+    # print (posts)
     context = {
         'posts' : posts
     }
     return render(request,'trade/requests.html',context)
 
 def requestsSentShow(request):
-    posts= Request.objects.exclude(exporterName = request.user)
-    print (posts)
+    posts= Request.objects.filter(importerName = request.user)
+    # print (posts)
     context = {
         'posts' : posts
     }
-    return render(request,'trade/requests.html',context)
+    return render(request,'trade/requestssent.html',context)
 
 def homePageView(request):
     posts= Commodity.objects.exclude(exporterName = request.user)
@@ -95,3 +96,10 @@ def myCommoditiesView(request):
         'object_list' : queryset
     }
     return render(request, "trade/commodity_list.html", context)
+
+
+def requestAccept(request,id):
+    req = Request.objects.get(id=id)
+    # comm = Commodity.objects.filter(commodityName = req.commodityName, exporterName = req.exporterName)
+    # comm.quantityAvailable = comm.quantityAvailable - req.quantityRequested
+    return HttpResponse("ok")
