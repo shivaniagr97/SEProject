@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^commodity/requests/sent$', requestsSentShow, name='requests-view-sent'),
     url(r'^details/(?P<id>\d+)/$', requestAccept, name='details'),
     url(r'^mycommodities/view/$', myCommoditiesView, name='mycommodities-view'),
-    url(r'^about/$',aboutView,name='about-view'),
+    url(r'^about/$', aboutView, name='about-view'),
 ]
