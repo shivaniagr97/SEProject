@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -108,7 +108,7 @@ def requestAccept(request,id):
     else:
         Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
         Request.objects.filter(id=id).delete()
-        return HttpResponse("ok")
+        return redirect("requests-view")
 
 
 def aboutView(request):
