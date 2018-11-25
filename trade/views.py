@@ -112,4 +112,4 @@ def requestAccept(request,id):
 
 
 def aboutView(request):
-    return render(request, "trade/about.html")
+    return render(request, 'trade/about.html')
