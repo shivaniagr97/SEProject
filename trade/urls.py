@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^details/(?P<id>\d+)/$', requestAccept, name='details'),
     url(r'^mycommodities/view/$', myCommoditiesView, name='mycommodities-view'),
     url(r'^about/$', aboutView, name='about-view'),
+
 ]
