@@ -26,7 +26,7 @@
         <form>
           <div class="form-group">
             <!-- <label for="recipient-name" class="col-form-label">Description:</label> -->
-            <input  readonly type="plain-text" class="form-control" id="recipient-name">
+            <textarea readonly type="plain-text" class="form-control" id="recipient-name" rows=5> Description </textarea>
           </div>
         </form>
       </div>
@@ -47,7 +47,7 @@
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
     // modal.find('.modal-title').text('New message to ' + recipient)
-    modal.find('.modal-body input').val(recipient)
+    modal.find('.modal-body textarea').val(recipient)
   })
   </script>
         </div>
