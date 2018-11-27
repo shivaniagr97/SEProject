@@ -15,7 +15,7 @@ class Commodity(models.Model):
     #     return f"/trade/mycommodities/{self.id}/"
 
 class Trade(models.Model):
-    tradeID = models.IntegerField()
+    # tradeID = models.IntegerField()
     commodityName = models.CharField( max_length = 50)
     importerName = models.CharField( max_length = 50)
     exporterName = models.CharField( max_length = 50 )

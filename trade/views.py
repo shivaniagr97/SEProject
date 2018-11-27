@@ -6,8 +6,11 @@ from .forms import CommodityForm, RequestForm
 # Create your views here.
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from .models import Commodity ,Request
+from .models import Commodity ,Request, Trade
 from django.db.models import F
+# from django.utils import timezone
+import datetime
+# from datetime import date
 # from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     UpdateView,
@@ -107,6 +110,7 @@ def requestAccept(request,id):
         return HttpResponse("Please request for less commodties")
     else:
         Commodity.objects.filter(commodityName = req.commodityName, exporterName = request.user).update(quantityAvailable=F('quantityAvailable') - req.quantityRequested)
+        Trade.objects.create(commodityName=req.commodityName,importerName=req.importerName,exporterName=req.exporterName,datePerformed=datetime.datetime.now(),totalPrice=obj.price*req.quantityRequested)
         Request.objects.filter(id=id).delete()
         return redirect("requests-view")
 
